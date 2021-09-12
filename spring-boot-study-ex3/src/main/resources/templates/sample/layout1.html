@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>layout1</title>
+</head>
+<body>
+
+<h1>Fragment Test</h1>
+
+<div style="border: 1px solid blue">
+    <!-- :: 을 지정하지 않는 경우 fragment html 전체를 replace -->
+    <th:block th:replace="~{fragments/fragment2}"></th:block>
+</div>
+
+<h1>Layout 1 - 1</h1>
+<!-- replace 를 하는 경우 해당 태그가 th:fragment 로 대체-->
+<div th:replace="~{fragments/fragment1 :: part1}"></div>
+
+<h1>Layout 1 - 2</h1>
+<!-- insert 하는 경우 해당 태그 내에 fragment 가 추가 -->
+<div th:insert="~{fragments/fragment1 :: part2}"></div>
+
+<h1>Layout 1 - 3</h1>
+<div th:replace="~{fragments/fragment1 :: part3}"></div>
+
+</body>
+</html>

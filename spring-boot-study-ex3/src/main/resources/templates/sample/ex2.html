@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3> List 단순 조회 </h3>
+<ul>
+    <li th:each="dto : ${list}">
+        [[${dto}]]
+    </li>
+</ul>
+
+<h3> state 로 index 까지 조회</h3>
+<ul>
+    <li th:each="dto, state : ${list}">
+        [[${state.index}]] --- [[${dto}]]
+    </li>
+</ul>
+
+
+<h3> sno 가 5 의 배수인 Dto 조회</h3>
+<ul>
+    <li th:each="dto, state : ${list}" th:if="${dto.sno % 5 ==0}">
+        [[${dto}]]
+    </li>
+</ul>
+
+
+<h3> sno 가 5 의 배수인 경우 sno 만 출력, 아닐 경우 First 출력</h3>
+
+<ul>
+    <li th:each="dto, state : ${list}">
+        <span th:if="${dto.sno % 5 ==0}" th:text="${'---------------'+dto.sno}"></span>
+        <span th:unless="${dto.sno %5==0}" th:text="${dto.first}"></span>
+    </li>
+</ul>
+
+
+<h3> 위 예제를 삼항 연산자로 출력 </h3>
+
+<ul>
+    <li th:each="dto, state : ${list}" th:text="${dto.sno %5==0}?${'------------'+dto.sno}:${dto.first}"></li>
+</ul>
+
+<h3> 삼항 연산자를 이용한 조건형 class 적용</h3>
+<ul>
+    <li th:each="dto, state : ${list} " th:class="${dto.sno%5==0}?'target'" th:text="${dto}"></li>
+</ul>
+
+<h3> th:block 를 사용한 list 처리 </h3>
+
+<ul>
+    <th:block th:each="dto : ${list}">
+
+        <li th:text="${dto.sno %5==0}?${dto.sno}:${dto.first}"></li>
+
+    </th:block>
+</ul>
+
+
+<h3>thymeleaf-extras-java8time 를 사용항 LocalDateTime formatting </h3>
+<ul>
+    <li th:each="dto : ${list}">
+        [[${dto.sno}]] --- [[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]
+    </li>
+</ul>
+
+
+<style>
+    .target {
+        background-color: coral;
+        display: inline;
+    }
+</style>
+</body>
+</html>

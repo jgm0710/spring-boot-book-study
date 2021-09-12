@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<!-- layout2 에서 해당 fragment 를 호출 -->
+<!-- ul tag 내용이 c1, c2 div 내부로 들어가고 해당 ul 에 배경색 설정돼서 다시 layout2 로 replace -->
+<div th:fragment="target(first, second)">
+  <style>
+    .c1 {
+      background-color: red;
+    }
+    .c2 {
+      background-color: blue;
+    }
+  </style>
+  <div class="c1">
+    <th:block th:replace="${first}"></th:block>
+  </div>
+  <div class="c2">
+    <th:block th:replace="${second}"></th:block>
+  </div>
+</div>
+</body>
+</html>

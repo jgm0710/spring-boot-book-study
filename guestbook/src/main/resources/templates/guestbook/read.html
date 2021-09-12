@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{/layout/basic::setContent(~{this::content})}">
+
+  <div th:fragment="content">
+
+    <h1 class="mt-4">GuestBook Read Page</h1>
+
+    <div class="form-group">
+      <label>Gno</label>
+      <input type="text" class="form-control" name="gno" th:value="${dto.gno}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" name="title" th:value="${dto.title}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>Content</label>
+      <input type="text" class="form-control" name="title" th:value="${dto.content}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>Writer</label>
+      <textarea class="form-control" rows="5" name="content" th:text="${dto.content}" readonly></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>RegDate</label>
+      <input type="text" class="form-control" name="title" th:value="${dto.regDate}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>ModDate</label>
+      <input type="text" class="form-control" name="title" th:value="${dto.modDate}" readonly>
+    </div>
+
+    <a th:href="@{/guestbook/modify(gno=${dto.gno}, pageNum=${requestDto.pageNum}, amount=${requestDto.amount})}" href="">
+      <button class="btn btn-info">Modify</button>
+    </a>
+
+    <a th:href="@{/guestbook/list(pageNum=${requestDto.pageNum}, amount=${requestDto.amount})}" href="">
+      <button class="btn btn-info">List</button>
+    </a>
+
+
+  </div>
+
+</div>
+
+</html>

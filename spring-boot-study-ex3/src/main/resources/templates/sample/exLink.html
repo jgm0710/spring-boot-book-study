@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+
+<h3>th:href 를 사용한 링크 처리 </h3>
+<ul>
+  <li th:each="dto : ${list}">
+      <!-- sno 로 변수 선언해서 th:href 내에서 사용 -->
+      <!-- 소괄호 안에 선언만 할 경우 query parameter 로 사용 -->
+    <a th:href="@{/sample/exView/{sno}(sno=${dto.sno})}" th:text="${dto}"></a>
+  </li>
+</ul>
+
+</body>
+</html>

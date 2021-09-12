@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- layout1 html 파일로 대체 -->
+<th:block th:replace="~{/layout/layout1::setContent(~{this::content})}">
+  <!-- layout1 의 div content 부분이 아래의 fragment 로 대체 -->
+  <th:block th:fragment="content">
+    <h1>exTemplate Page</h1>
+  </th:block>
+</th:block>
+</html>

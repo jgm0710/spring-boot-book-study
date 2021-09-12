@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 th:text="${result}"></h1>
+<h1 th:text="${dto}"></h1>
+
+<!--  Controller 에서 보내준 값이 자연스럽게 javascript 변수로 초기화 하여 사용할 수 있음 -->
+<script th:inline="javascript">
+  var msg = [[${result}]];
+  var dto = [[${dto}]];
+</script>
+</body>
+</html>
